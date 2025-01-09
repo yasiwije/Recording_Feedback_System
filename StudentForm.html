@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            overflow: hidden;
+        }
+        .feedback-form-container {
+            width: 90%;
+            max-width: 500px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .feedback-form-container:before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(137, 247, 254, 0.4);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .feedback-form-container:after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(102, 166, 255, 0.4);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .feedback-form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        .feedback-form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .feedback-form-container input,
+        .feedback-form-container select,
+        .feedback-form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .feedback-form-container textarea {
+            resize: vertical;
+        }
+        .feedback-form-container button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .feedback-form-container button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #32cd7a, #28c7b9);
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-form-container">
+        <h2>Student Form</h2>
+        <form action="StudentForm.php" method="POST">
+            <!-- Student Name -->
+            <label for="student_name">Student Name</label>
+            <input type="text" id="student_name" name="student_name" placeholder="Enter student name" required>
+            
+            <!-- Student CLass -->
+            <label for="student_Class">Student Class</label>
+            <input type="text" id="student_Class" name="student_Class" placeholder="Enter student Class" required>
+            
+            <!-- Submit Button -->
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
