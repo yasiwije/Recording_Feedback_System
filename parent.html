@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(244, 92, 67, 0.9);
+            color: white;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .container {
+            margin-top: 30px;
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            background: rgba(244, 92, 67, 0.2);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .card:after {
+            content: "";
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            width: 120px;
+            height: 120px;
+            background: rgba(244, 92, 67, 0.2);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+            color: #333;
+        }
+        .card p {
+            margin: 0 0 15px 0;
+            color: #555;
+            font-size: 16px;
+        }
+        .card button {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .card button:hover {
+            background: linear-gradient(135deg, #e7634b, #f89566);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Parent </h1>
+    </header>
+    <div class="container">
+        <!-- View Students' Feedback -->
+        <div class="card">
+            <h2>View Students' Feedback</h2>
+            <p>Access feedback provided by teachers on your child's performance and progress.</p>
+            <button onclick="location.href='studentsfeedback.html'">View Feedback</button>
+        </div>
+        <!-- View Report from Principal -->
+        <div class="card">
+            <h2>View Report from Principal</h2>
+            <p>Read suggestions and guidelines provided by the principal to support your child's learning.</p>
+            <button onclick="location.href='Finalreport.html'">View Suggestions</button>
+        </div>
+        <!-- Provide Responses -->
+        <div class="card">
+            <h2>Provide Responses</h2>
+            <p>Share your feedback and suggestions regarding your child's education and experience.</p>
+            <button onclick="location.href='provide-responses.html'">Provide Responses</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background: linear-gradient(to right, #00c6ff, #0072ff); display: flex; justify-content: center; align-items: center; height: 100vh; color: #fff;">
+    <div style="background: rgba(0, 0, 0, 0.6); padding: 20px 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); text-align: center; width: 100%; max-width: 400px;">
+        <h1 style="margin-bottom: 20px;">Sign Up</h1>
+        <form>
+            <label for="current-username" style="display: block; text-align: left; margin: 10px 0 5px; font-size: 14px; color: #ccc;">Username</label>
+            <input type="text" id="current-username" name="current-username" placeholder="Enter current username" required style="width: 100%; padding: 10px; margin: 5px 0 15px; border: none; border-radius: 5px; outline: none; font-size: 16px;">
+
+            <label for="current-password" style="display: block; text-align: left; margin: 10px 0 5px; font-size: 14px; color: #ccc;">New Password</label>
+            <input type="password" id="current-password" name="current-password" placeholder="Enter current password" required style="width: 100%; padding: 10px; margin: 5px 0 15px; border: none; border-radius: 5px; outline: none; font-size: 16px;">
+
+            <label for="role" style="display: block; text-align: left; margin: 10px 0 5px; font-size: 14px; color: #ccc;">Select</label>
+            <select id="role" name="role" required style="width: 100%; padding: 10px; margin: 5px 0 15px; border: none; border-radius: 5px; outline: none; font-size: 16px;">
+                <option value="" disabled selected>Choose a role</option>
+                <option value="1">Parent</option>
+                <option value="2">Teacher</option>
+            </select>
+
+            <button type="submit" style="background: #0072ff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; color: #fff; font-size: 16px; transition: background 0.3s;">Change</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Students Feedback Recording System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://source.unsplash.com/featured/?school,campus'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: rgba(31, 58, 116, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #0f0406;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .login-container input, .login-container select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #713f3f;
+            border-radius: 10px;
+        }
+        .login-container button {
+            width: 40%;
+            padding: 0.8rem;
+            background-color: #150aaf;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #3806dc;
+        }
+        .login-container a {
+            display: block;
+            text-align: right;
+            margin-top: 0.5rem;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Students Feedback Recording System Central College</h1>
+        <h2>Register</h2>
+        <form action="connect.php" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="position">Position</label>
+            <select id="position" name="position" required>
+                <option value="">Select your position</option>
+                <option value="Principal">Principal</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Parent">Parent</option>
+            </select>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">SUBMIT</button>
+        </form>
+        
+    </div>
+</body>
+</html>
