@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('education-background.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(to bottom right, #283c86, #45a247);
             color: #fff;
+            overflow-x: hidden;
         }
 
         /* Navigation bar styles */
@@ -20,110 +20,209 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(255, 193, 7, 0.9);
-            /* Vibrant yellow with slight transparency */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 1rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #212529;
-            /* Dark text */
-            padding: 1rem 2rem;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
             margin: 0 10px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.2rem;
-            border-radius: 10px;
-            background: #fff;
+            border-radius: 20px;
+            background: linear-gradient(to right, #f09819, #edde5d);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        nav a img {
-            margin-right: 10px;
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s;
+        nav a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-45deg);
+            transition: left 0.4s;
+        }
+
+        nav a:hover:before {
+            left: 100%;
         }
 
         nav a:hover {
-            background-color: #343a40;
-            /* Dark gray */
-            color: #ffc107;
-            /* Yellow text */
             transform: scale(1.1);
+            background-color: #f39c12;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
         nav a:hover img {
-            transform: rotate(15deg);
+            transform: rotate(20deg);
         }
 
-        div.gallery {
-            margin: 5px;
-            border: 1px solid #ccc;
-            float: left;
-            width: 180px;
+        .login-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
         }
 
-        div.gallery:hover {
-            border: 1px solid #777;
+        .login-buttons button {
+            padding: 1rem 2rem;
+            margin: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.3s;
         }
 
-        div.gallery img {
+        .login-buttons button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Decorative floating shapes */
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 8s infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 15%;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 20%;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            left: 30%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
             width: 100%;
             height: auto;
+            transition: transform 0.3s;
         }
 
-        div.desc {
-            padding: 15px;
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .desc {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
             text-align: center;
+            padding: 10px;
+            font-size: 1rem;
         }
     </style>
-    </style>
-    <title>Navigation with Animations</title>
+
+    <title>Enhanced Navigation & Interface</title>
 </head>
 
 <body>
     <nav>
-        <a href="#student" onclick="navigateTo('studentsfeedback.html')">Student feedback</a>
-        <a href="#studentdetails" onclick="navigateTo('studentdetails.php')">StudentForm Details</a>
-        <a href="#students" onclick="navigateTo('studentdetails.php')">Student</a>
-        <a href="#StudentForm" onclick="navigateTo('StudentForm.html')">Student Form</a>
+        <a href="#student" onclick="navigateTo('studentsfeedback.html')">Student Feedback</a>
+        <a href="#studentdetails" onclick="navigateTo('studentdetails.php')">Student Details</a>
+        <a href="#students" onclick="navigateTo('students.html')">Students</a>
+        <a href="#studentform" onclick="navigateTo('studentform.html')">Student Form</a>
     </nav>
-    <!-- <div>
-        <div class="gallery">
-            <a target="_blank" href=".jpg">
-                <img src="image1.jpg" alt="Cinque Terre" width="600" height="400">
-            </a>
-            <div class="desc">Add a description of the image here</div>
+
+    <!-- Login Buttons -->
+    <div class="login-buttons">
+        <button onclick="navigateTo('PrincipleLogin.html')">Principal </button>
+        <button onclick="navigateTo('Teacherlogin.html')">Teacher </button>
+        <button onclick="navigateTo('parentlogin.html')">Parent </button>
+    </div>
+
+    <!-- Decorative floating shapes -->
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="image1.jpg" alt="Cinque Terre">
+            <div class="desc">Beautiful Landscape</div>
         </div>
-    
-        <div class="gallery">
-            <a target="_blank" href="image2.jpg">
-                <img src="image3.jpg" alt="Forest" width="600" height="400">
-            </a>
-            <div class="desc">Add a description of the image here</div>
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="Forest">
+            <div class="desc">Serene Forest</div>
         </div>
-    
-        <div class="gallery">
-            <a target="_blank" href="image4.jpg">
-                <img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
-            </a>
-            <div class="desc">Add a description of the image here</div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Northern Lights">
+            <div class="desc">Northern Lights</div>
         </div>
-    
-        <div class="gallery">
-            <a target="_blank" href="img_mountains.jpg">
-                <img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
-            </a>
-            <div class="desc">Add a description of the image here</div>
+        <div class="gallery-item">
+            <img src="image4.jpg" alt="Mountains">
+            <div class="desc">Majestic Mountains</div>
         </div>
-    </div> -->
+    </div>
+
     <script>
         function navigateTo(url) {
             window.location.href = url;
