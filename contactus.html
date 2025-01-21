@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - College</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('istockphoto-1919863292-1024x1024.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(182, 188, 14, 0.9);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .contact-details {
+            margin: 20px 0;
+        }
+
+        .contact-details h2 {
+            color: #0a14a2;
+            margin-bottom: 10px;
+        }
+
+        .contact-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #cfac0e;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+
+        <div class="contact-details">
+            <h2>College Contact Details</h2>
+            <p><strong>Address:</strong> 123 College Road, Knowledge City, EduState, 567890</p>
+            <p><strong>Telephone:</strong> +1 (555) 123-4567</p>
+            <p><strong>Email:</strong> info@college.edu</p>
+
+            <h2>Key Contacts</h2>
+            <p><strong>Principal's Office:</strong> +1 (555) 234-5678</p>
+            <p><strong>Administration Office:</strong> +1 (555) 345-6789</p>
+            <p><strong>Medical Center:</strong> +1 (555) 456-7890</p>
+            <p><strong>Support:</strong> support@college.edu</p>
+
+            <h2>Sectional Heads</h2>
+            <p><strong>Office:</strong> +1 (555) 234-5678</p>
+            <p><strong> personal number:</strong> +1 (555) 345-6789</p>
+            <p><strong>Emailr:</strong> section@gmail.com</p>
+            <p><strong>Support:</strong> support@college.edu</p>
+
+        </div>
+
+        <script>
+            function validateForm() {
+                let isValid = true;
+
+                // Clear previous error messages
+                document.getElementById('nameError').textContent = "";
+                document.getElementById('emailError').textContent = "";
+
+                // Validate name
+                const name = document.getElementById('name').value.trim();
+                if (name === "") {
+                    document.getElementById('nameError').textContent = "Name is required.";
+                    isValid = false;
+                }
+
+                // Validate email
+                const email = document.getElementById('email').value.trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (email === "") {
+                    document.getElementById('emailError').textContent = "Email is required.";
+                    isValid = false;
+                } else if (!emailPattern.test(email)) {
+                    document.getElementById('emailError').textContent = "Please enter a valid email address.";
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

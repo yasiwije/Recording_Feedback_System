@@ -1,4 +1,3 @@
-
 <?php
 // Database configuration
 define('DB_HOST', 'localhost'); // Replace with your database host
@@ -15,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
-$sql = "SELECT * FROM student"; // Replace 'student_feedback' with your table name
+$sql = "SELECT * FROM student_feedback"; // Replace 'student_feedback' with your table name
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -78,7 +77,9 @@ $result = $conn->query($sql);
             <tr>
                 <th>SId</th>
                 <th>Name</th>
-                <th>Class</th>
+                <th>Performance Rating</th>
+                <th>academics</th>
+                <th>behavior</th>
                 <th>submitted_at</th>
             </tr>
             <?php
@@ -86,10 +87,12 @@ $result = $conn->query($sql);
                 // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>" . $row['studentId'] . "</td>
+                            <td>" . $row['student_id'] . "</td>
                             <td>" . $row['student_name'] . "</td>
-                            <td>" . $row['student_Class'] . "</td>
-                             <td>" . $row['submitted_at'] . "</td>
+                            <td>" . $row['performance_rating'] . "</td>
+                             <td>" . $row['academics'] . "</td>
+                              <td>" . $row['behavior'] . "</td>
+                               <td>" . $row['submitted_at'] . "</td>
                           </tr>";
                 }
             } else {

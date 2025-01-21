@@ -86,12 +86,12 @@
 </head>
 
 <body>
-    <div class="login-container">
+    <div class="login-container" >
         <h2>Principal Login</h2>
-        <form>
+        <form action="login.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <input type="text" id="username" name="name" placeholder="Enter your username" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -99,7 +99,7 @@
             </div>
             <button type="submit">Login</button>
         </form>
-        <a href="#" class="forgot-password">Forgot Password?</a>
+        <!-- <a href="#" class="forgot-password">Forgot Password?</a> -->
     </div>
 </body>
 

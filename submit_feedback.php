@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Feedback submitted successfully!'); window.location.href='studentsfeedback.html';</script>";
+        echo "<script>alert('Feedback submitted successfully!'); window.location.href='studentdetails.php';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
