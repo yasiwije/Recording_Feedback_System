@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
-$sql = "SELECT * FROM student"; // Replace 'student' with your table name
+$sql = " SELECT * FROM student WHERE studentId = 5"; // Replace 'student' with your table name
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>

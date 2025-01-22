@@ -18,7 +18,7 @@
     session_start();
     if (isset($_SESSION['user_id'])) {
         // Fetch all reports
-        $stmt = $conn->prepare("SELECT * FROM reports"); // SELECT statement to fetch data
+        $stmt = $conn->prepare("SELECT * FROM reports WHERE studentId = 5"); // SELECT statement to fetch data
         $stmt->execute();
         $result = $stmt->get_result(); // Store the result
     } else {
@@ -175,7 +175,7 @@
             <p>No reports found.</p>
         <?php endif; ?>
         <div class="btn-container">
-            <a href="dashboard.php" class="btn">Back to Dashboard</a>
+            <a href="parent.html" class="btn">Back to Dashboard</a>
         </div>
     </div>
 </body>

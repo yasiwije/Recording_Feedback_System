@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-define('DB_HOST', 'localhost'); // Change to your database host
-define('DB_USER', 'root');      // Change to your database username
-define('DB_PASS', '');          // Change to your database password
-define('DB_NAME', 'school_db'); // Change to your database name
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'school_db');
 
 // Connect to the database
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -17,46 +17,52 @@ if ($conn->connect_error) {
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Validate required fields
-    if (
-        isset($_SESSION['principle-id'], $_POST['content'], $_POST['student-id']) &&
-        !empty($_SESSION['principle-id']) &&
-        !empty($_POST['content']) &&
-        !empty($_POST['student-id'])
-    ) {
-        $principalId = intval($_POST['principle-id']);
-        $content = trim($_POST['content']);
-        $studentId = intval($_POST['student-id']); // Ensure student ID is an integer
 
-        echo "Principal ID: $principalId<br>";
-        echo "Content: $content<br>";
-        echo "Student ID: $studentId<br>";
+    $principalId = intval($_POST['principle-id']);
+    $content = trim($_POST['content']);
+    $studentId = intval($_POST['student-id']);
 
-        // Insert the report into the database
-        try {
-            $stmt = $conn->prepare("INSERT INTO Reports (Principal_ID, Content, studentId) VALUES (?, ?, ?)");
-            
-            if (!$stmt) {
-                throw new Exception("Failed to prepare statement: " . $conn->error);
-            }
+    // Verify Principal_ID exists
+    $principalCheck = $conn->prepare("SELECT User_ID FROM principal WHERE User_ID = ?");
+    if (!$principalCheck) {
+        die("Error preparing principal check statement: " . $conn->error);
+    }
+    $principalCheck->bind_param("i", $principalId);
+    $principalCheck->execute();
+    if ($principalCheck->get_result()->num_rows == 0) {
+        die("Error: Principal ID does not exist.");
+    }
 
-            $stmt->bind_param("isi", $principalId, $content, $studentId);
+    // Verify studentId exists
+    $studentCheck = $conn->prepare("SELECT studentId FROM student WHERE studentId = ?");
+    if (!$studentCheck) {
+        die("Error preparing student check statement: " . $conn->error);
+    }
+    $studentCheck->bind_param("i", $studentId);
+    $studentCheck->execute();
+    if ($studentCheck->get_result()->num_rows == 0) {
+        die("Error: Student ID does not exist.");
+    }
 
-            if ($stmt->execute()) {
-                echo "<script>alert('Report generated successfully!'); window.location.href='view_reports.php';</script>";
-            } else {
-                throw new Exception("Error generating report: " . $stmt->error);
-            }
-
-            $stmt->close();
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
+    // Insert the report into the database
+    try {
+        $stmt = $conn->prepare("INSERT INTO reports (Principal_ID, Content, studentId) VALUES (?, ?, ?)");
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $conn->error);
         }
-    } else {
-        echo "Error: All fields are required.";
+
+        $stmt->bind_param("isi", $principalId, $content, $studentId);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Report generated successfully!'); window.location.href='view_reports.php';</script>";
+        } else {
+            throw new Exception("Error generating report: " . $stmt->error);
+        }
+        $stmt->close();
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
 }
-
 // Close the connection
 $conn->close();
 ?>

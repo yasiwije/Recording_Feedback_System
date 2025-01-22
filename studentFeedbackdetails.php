@@ -48,6 +48,18 @@ $result = $conn->query($sql);
             margin-bottom: 20px;
             color: #0072ff;
         }
+        .search-box {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .search-box input {
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -69,34 +81,57 @@ $result = $conn->query($sql);
             background-color: #f1f1f1;
         }
     </style>
+    <script>
+        function searchTable() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.getElementById("feedbackTable");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let match = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].innerText.toLowerCase().includes(input)) {
+                        match = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = match ? "" : "none";
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Student Feedback Details</h2>
-        <table>
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search table...">
+        </div>
+        <table id="feedbackTable">
             <tr>
                 <th>SId</th>
                 <th>Name</th>
                 <th>Performance Rating</th>
-                <th>academics</th>
-                <th>behavior</th>
-                <th>submitted_at</th>
+                <th>Academics</th>
+                <th>Behavior</th>
+                <th>Submitted At</th>
             </tr>
             <?php
             if ($result->num_rows > 0) {
-                // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
                             <td>" . $row['student_id'] . "</td>
                             <td>" . $row['student_name'] . "</td>
                             <td>" . $row['performance_rating'] . "</td>
-                             <td>" . $row['academics'] . "</td>
-                              <td>" . $row['behavior'] . "</td>
-                               <td>" . $row['submitted_at'] . "</td>
+                            <td>" . $row['academics'] . "</td>
+                            <td>" . $row['behavior'] . "</td>
+                            <td>" . $row['submitted_at'] . "</td>
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='3'>No records found</td></tr>";
+                echo "<tr><td colspan='6'>No records found</td></tr>";
             }
             ?>
         </table>
@@ -107,3 +142,4 @@ $result = $conn->query($sql);
 // Close the connection
 $conn->close();
 ?>
+

@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
-$sql = "SELECT * FROM student"; // Replace 'student' with your table name
+$sql = "SELECT * FROM student_feedback WHERE student_id = 5"; // Replace 'student_feedback' with your table name
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -48,6 +48,18 @@ $result = $conn->query($sql);
             margin-bottom: 20px;
             color: #0072ff;
         }
+        .search-box {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .search-box input {
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -73,26 +85,29 @@ $result = $conn->query($sql);
 <body>
     <div class="container">
         <h2>Student Feedback Details</h2>
-        <table>
+        <table id="feedbackTable">
             <tr>
                 <th>SId</th>
                 <th>Name</th>
-                <th>Class</th>
+                <th>Performance Rating</th>
+                <th>Academics</th>
+                <th>Behavior</th>
                 <th>Submitted At</th>
             </tr>
             <?php
             if ($result->num_rows > 0) {
-                // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>" . $row['studentId'] . "</td>
+                            <td>" . $row['student_id'] . "</td>
                             <td>" . $row['student_name'] . "</td>
-                            <td>" . $row['student_Class'] . "</td>
+                            <td>" . $row['performance_rating'] . "</td>
+                            <td>" . $row['academics'] . "</td>
+                            <td>" . $row['behavior'] . "</td>
                             <td>" . $row['submitted_at'] . "</td>
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='4'>No records found</td></tr>";
+                echo "<tr><td colspan='6'>No records found</td></tr>";
             }
             ?>
         </table>
@@ -103,3 +118,4 @@ $result = $conn->query($sql);
 // Close the connection
 $conn->close();
 ?>
+
